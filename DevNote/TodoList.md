@@ -6,7 +6,7 @@
 
 ## Managing Save
 
-[ ] Save init.
+[v] Save init.
 [ ] Saving data.
 [ ] Loading data.
 [ ] Erasing data.
@@ -18,14 +18,15 @@
 
 ## Title Screen
 
-[ ] Title Screen layout.
-[ ] Scene Transition.
-[ ] Delete button.
+[v] Title Screen layout.
+[v] Scene Transition.
+[v] Delete button.
 
 ## Field Part
 
 [ ] Loading field.
 [ ] Character movement.
+[ ] Collision check.
 [ ] Field transition.
 
 ### Managing Adventure
