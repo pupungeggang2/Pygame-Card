@@ -9,11 +9,17 @@ scene = 'title'
 state = ''
 menu = False
 
+keyboard = {
+    'left' : False, 'right' : False, 'up' : False, 'down' : False
+}
+
 class Field():
     camera = [0, 0]
     position_player = [640, 640]
     place = 'HomeTown'
     field = {}
+    destination_place = ''
+    destination_position = [0, 0]
 
 class Adventure():
     adventure = False

@@ -1,1 +1,61 @@
-{}
+{
+    'home_town' : {
+        'village' : True,
+        'event' : [],
+        'event_spawn' : [],
+        'monster_id' : [],
+        'elite' : [],
+        'wall' : [],
+        'thing' : [],
+        'connection' : [
+            [[600, 40, 80, 80], 'plain_1', [640, 1200]],
+        ]
+    },
+
+    'plain_1' : {
+        'village' : False,
+        'event' : [],
+        'event_spawn' : [[120, 120, 40, 40], [1120, 120, 40, 40], [120, 1120, 20, 20], [1120, 1120, 20, 20], [620, 620, 20, 20]],
+        'monster_id' : [1, 2],
+        'elite' : [],
+        'wall' : [],
+        'thing' : [],
+        'connection' : [
+            [[600, 1160, 80, 80], 'home_town', [640, 80]]
+        ]
+    },
+
+    'plain_2' : {
+        'village' : True,
+        'event' : [],
+        'event_spawn' : [],
+        'monster_id' : [1, 2, 3],
+        'elite' : [],
+        'wall' : [],
+        'thing' : [],
+        'connection' : []
+    },
+
+    'center_town' : {
+        'village' : True,
+        'event' : [],
+        'event_spawn' : [],
+        'monster_id' : [],
+        'elite' : [],
+        'wall' : [],
+        'thing' : [],
+        'connection' : []
+    },
+
+    'plain_3' : {
+
+    },
+
+    'plain_4' : {
+
+    },
+
+    'snow_1' : {
+
+    },
+}

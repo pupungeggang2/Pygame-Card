@@ -40,6 +40,11 @@ def load_asset():
     except:
         asset.Font.main_32 = pygame.font.SysFont(None, 32)
 
+    asset.Image.connection = pygame.image.load('Image/Connection.png')
+    asset.Image.monster = pygame.image.load('Image/Monster.png')
+    asset.Image.mystery = pygame.image.load('Image/Mystery.png')
+    asset.Image.field_shop = pygame.image.load('Image/FieldShop.png')
+
 def load_save():
     try:
         f = open('Save/save.txt', 'r')
@@ -84,6 +89,15 @@ def handle_input():
         if event.type == pygame.KEYDOWN:
             key = event.key
 
+            if key == pygame.K_LEFT or key == pygame.K_a:
+                var.keyboard['left'] = True
+            if key == pygame.K_RIGHT or key == pygame.K_d:
+                var.keyboard['right'] = True
+            if key == pygame.K_UP or key == pygame.K_w:
+                var.keyboard['up'] = True
+            if key == pygame.K_DOWN or key == pygame.K_s:
+                var.keyboard['down'] = True
+
             if var.scene == 'title':
                 scenetitle.key_down(key)
 
@@ -95,6 +109,15 @@ def handle_input():
 
         if event.type == pygame.KEYUP:
             key = event.key
+
+            if key == pygame.K_LEFT or key == pygame.K_a:
+                var.keyboard['left'] = False
+            if key == pygame.K_RIGHT or key == pygame.K_d:
+                var.keyboard['right'] = False
+            if key == pygame.K_UP or key == pygame.K_w:
+                var.keyboard['up'] = False
+            if key == pygame.K_DOWN or key == pygame.K_s:
+                var.keyboard['down'] = False
 
             if var.scene == 'title':
                 scenetitle.key_up(key)

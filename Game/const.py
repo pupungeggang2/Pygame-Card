@@ -3,6 +3,7 @@ class Color():
     white = [255, 255, 255]
 
 empty_save = {
+    'place' : 'home_town',
     'card' : [],
     'equipment' : [],
     'item' : [],

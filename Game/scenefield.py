@@ -1,14 +1,21 @@
 import pygame
 import asset, UI, data, var, const
-import funcphysics, funcdraw
+import funcphysics, funcdraw, funcfield
 
 def loop():
+    if var.menu == False:
+        if var.state == '':
+            funcfield.field_tick()
+
     display()
 
 def display():
     var.screen.fill(const.Color.white)
 
     funcdraw.draw_field()
+
+    if var.state == 'adventure_confirm_start' or var.state == 'adventure_confirm_end':
+        funcdraw.draw_adventure_confirm()
 
     if var.menu == True:
         funcdraw.draw_menu_field()
@@ -35,7 +42,10 @@ def mouse_up(x, y, button):
                 var.state = ''
 
 def key_down(key):
-    pass
+    if var.menu == False:
+        if var.state == '':
+            if key == pygame.K_e:
+                funcfield.interact()
 
 def key_up(key):
     pass

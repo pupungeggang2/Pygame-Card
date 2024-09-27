@@ -22,5 +22,13 @@ class Field():
         button_exit = [320, 400, 640, 80]
         text_exit = [328, 424]
 
+    class Confirm():
+        rect = [320, 240, 640, 240]
+        text_title = [328, 264]
+        button_no = [400, 320, 160, 80]
+        text_no = [408, 344]
+        button_yes = [720, 320, 160, 80]
+        text_yes = [728, 344]
+
 class Game():
     pass

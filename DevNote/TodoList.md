@@ -46,6 +46,11 @@
 
 ### Basic Deck Manipulation
 
-### Start Hand Change
+[ ] Building deck.
+[ ] Shuffling deck.
+[ ] Drawing card.
 
 ### Handling Game
+
+[ ] Start hand change.
+[ ] Starting the first turn.

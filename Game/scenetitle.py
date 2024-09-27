@@ -1,6 +1,6 @@
 import pygame
 import asset, UI, data, var, const
-import funcphysics, funcsave
+import funcphysics, funcsave, funcfield
 
 def loop():
     display()
@@ -23,6 +23,7 @@ def mouse_up(x, y, button):
                 if funcphysics.point_inside_rect_array(x, y, UI.Title.button_start):
                     var.scene = 'field'
                     var.state = ''
+                    funcfield.field_init()
 
                 elif funcphysics.point_inside_rect_array(x, y, UI.Title.button_erase):
                     funcsave.erase_data()
