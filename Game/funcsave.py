@@ -3,7 +3,17 @@ import asset, UI, data, var, const
 
 def save_data():
     f = open('Save/save.txt', 'w')
-    f.write(str(var.save))
+    f.write(str(
+        {
+            'place' : var.Field.place,
+            'card' : [],
+            'equipment' : [],
+            'item' : [],
+            'gold' : [],
+            'skill_tree' : [],
+            'progress' : []
+        }
+    ))
     f.close()
 
 def load_data():

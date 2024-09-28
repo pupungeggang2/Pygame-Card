@@ -31,12 +31,19 @@ def draw_field():
         elif event_type == 'shop':
             var.screen.blit(asset.Image.field_shop, position_event)
 
+    for i in range(len(var.Field.field['thing'])):
+        thing = var.Field.field['thing'][i]
+        position_thing = [thing[0][0] - var.Field.camera[0], thing[0][1] - var.Field.camera[1]]
+
+        if thing[1] == 'save':
+            var.screen.blit(asset.Image.save, position_thing)
+
     rect_player = [var.Field.position_player[0] - var.Field.camera[0] - 20, var.Field.position_player[1] - var.Field.camera[1] - 20, 40, 40]
     pygame.draw.rect(var.screen, const.Color.black, rect_player, 2)
 
 def draw_adventure_confirm():
-    pygame.draw.rect(var.screen, const.Color.white, UI.Field.Menu.rect)
-    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Menu.rect, 2)
+    pygame.draw.rect(var.screen, const.Color.white, UI.Field.Confirm.rect)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Confirm.rect, 2)
 
     if var.state == 'adventure_confirm_start':
         var.screen.blit(asset.Font.main_32.render('Start Adventure?', False, const.Color.black), UI.Field.Confirm.text_title)
@@ -48,6 +55,17 @@ def draw_adventure_confirm():
     var.screen.blit(asset.Font.main_32.render('Yes', False, const.Color.black), UI.Field.Confirm.text_yes)
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Confirm.button_no, 2)
     var.screen.blit(asset.Font.main_32.render('No', False, const.Color.black), UI.Field.Confirm.text_no)
+
+def draw_save():
+    pygame.draw.rect(var.screen, const.Color.white, UI.Field.Save.rect)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.rect, 2)
+
+    var.screen.blit(asset.Font.main_32.render('Save Data?', False, const.Color.black), UI.Field.Save.text_title)
+
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.button_yes, 2)
+    var.screen.blit(asset.Font.main_32.render('Yes', False, const.Color.black), UI.Field.Save.text_yes)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.button_no, 2)
+    var.screen.blit(asset.Font.main_32.render('No', False, const.Color.black), UI.Field.Save.text_no)
 
 def draw_info():
     pass

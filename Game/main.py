@@ -45,6 +45,11 @@ def load_asset():
     asset.Image.mystery = pygame.image.load('Image/Mystery.png')
     asset.Image.field_shop = pygame.image.load('Image/FieldShop.png')
 
+    asset.Image.save = pygame.image.load('Image/Save.png')
+
+    asset.Image.Button.menu = pygame.image.load('Image/ButtonMenu.png')
+    asset.Image.Button.info = pygame.image.load('Image/ButtonInfo.png')
+
 def load_save():
     try:
         f = open('Save/save.txt', 'r')

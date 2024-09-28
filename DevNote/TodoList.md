@@ -2,6 +2,7 @@
 
 ## Managing Data
 
+[ ] Data creation.
 [ ] Data loading.
 
 ## Managing Save

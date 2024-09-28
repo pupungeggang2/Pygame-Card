@@ -74,3 +74,9 @@ def interact():
                 var.Field.place = var.Field.destination_place
                 load_field(var.Field.place)
                 var.Field.position_player = var.Field.destination_position
+
+    for i in range(len(var.Field.field['thing'])):
+        thing = var.Field.field['thing'][i]
+
+        if funcphysics.point_inside_rect_array(var.Field.position_player[0], var.Field.position_player[1], thing[0]):
+            var.state = 'save'

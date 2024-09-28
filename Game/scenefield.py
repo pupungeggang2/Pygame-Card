@@ -1,6 +1,6 @@
 import pygame
 import asset, UI, data, var, const
-import funcphysics, funcdraw, funcfield
+import funcphysics, funcdraw, funcfield, funcsave
 
 def loop():
     if var.menu == False:
@@ -14,6 +14,9 @@ def display():
 
     funcdraw.draw_field()
 
+    if var.state == 'save':
+        funcdraw.draw_save()
+
     if var.state == 'adventure_confirm_start' or var.state == 'adventure_confirm_end':
         funcdraw.draw_adventure_confirm()
 
@@ -21,9 +24,10 @@ def display():
         funcdraw.draw_menu_field()
 
     var.screen.blit(asset.Font.main_32.render(var.Field.place, False, const.Color.black), UI.Field.text_place)
-    pygame.draw.rect(var.screen, const.Color.black, UI.Field.button_menu, 2)
+    var.screen.blit(asset.Image.Button.menu, UI.Field.button_menu[:2])
     var.screen.blit(asset.Font.main_32.render('[E] Interact [I] Info', False, const.Color.black), UI.Field.text_tip)
-    pygame.draw.rect(var.screen, const.Color.black, UI.Field.button_info, 2)
+    var.screen.blit(asset.Image.Button.info, UI.Field.button_info[:2])
+    
     pygame.display.flip()
 
 def mouse_up(x, y, button):
@@ -31,6 +35,36 @@ def mouse_up(x, y, button):
         if var.menu == False:
             if funcphysics.point_inside_rect_array(x, y, UI.Field.button_menu):
                 var.menu = True
+
+            if var.state == 'adventure_confirm_start':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
+                    var.state = ''
+                    var.Adventure.adventure = True
+                    var.Field.place = var.Field.destination_place
+                    funcfield.load_field(var.Field.place)
+                    var.Field.position_player = var.Field.destination_position
+
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_no):
+                    var.state = ''
+
+            elif var.state == 'adventure_confirm_end':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
+                    var.state = ''
+                    var.Adventure.adventure = False
+                    var.Field.place = var.Field.destination_place
+                    funcfield.load_field(var.Field.place)
+                    var.Field.position_player = var.Field.destination_position
+
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_no):
+                    var.state = ''
+
+            elif var.state == 'save':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Save.button_yes):
+                    var.state = ''
+                    funcsave.save_data()
+
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Save.button_no):
+                    var.state = ''
 
         elif var.menu == True:
             if funcphysics.point_inside_rect_array(x, y, UI.Field.Menu.button_resume):
@@ -40,6 +74,7 @@ def mouse_up(x, y, button):
                 var.menu = False
                 var.scene = 'title'
                 var.state = ''
+
 
 def key_down(key):
     if var.menu == False:
