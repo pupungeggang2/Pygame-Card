@@ -53,7 +53,7 @@ def collision_check():
             if temp_event['type'] == 'monster':
                 var.Field.field['event'].pop(i)
                 var.scene = 'game'
-                var.state = ''
+                var.state = 'start'
                 break
 
 def interact():

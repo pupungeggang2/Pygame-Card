@@ -12,7 +12,15 @@ class Field():
     text_tip = [8, 664]
 
     class Info():
-        rect = [320, 240, 640, 240]
+        rect = [80, 80, 1120, 560]
+        button_close = [1160, 80, 40, 40]
+        tab_profile = [80, 80, 80, 80]
+        tab_card = [160, 80, 80, 80]
+        tab_deck = [240, 80, 80, 80]
+        tab_equipment = [320, 80, 80, 80]
+        tab_item = [400, 80, 80, 80]
+        tab_map = [480, 80, 80, 80]
+        tab_progress = [560, 80, 80, 80]
 
     class Menu():
         rect = [320, 240, 640, 240]
@@ -39,4 +47,11 @@ class Field():
         text_no = [728, 344]
 
 class Game():
-    pass
+    class Start():
+        rect = [80, 80, 1120, 560]
+        text_title = [88, 88]
+        button_select = [
+            [160, 160, 160, 240], [560, 160, 160, 240], [960, 160, 160, 240]
+        ]
+        button_start = [560, 480, 160, 80]
+        text_start = [568, 504]

@@ -20,6 +20,9 @@ def display():
     if var.state == 'adventure_confirm_start' or var.state == 'adventure_confirm_end':
         funcdraw.draw_adventure_confirm()
 
+    if var.state == 'info':
+        funcdraw.draw_info()
+
     if var.menu == True:
         funcdraw.draw_menu_field()
 
@@ -35,6 +38,14 @@ def mouse_up(x, y, button):
         if var.menu == False:
             if funcphysics.point_inside_rect_array(x, y, UI.Field.button_menu):
                 var.menu = True
+
+            if var.state == '':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.button_info):
+                    var.state = 'info'
+
+            elif var.state == 'info':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_close):
+                    var.state = ''
 
             if var.state == 'adventure_confirm_start':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
@@ -81,6 +92,13 @@ def key_down(key):
         if var.state == '':
             if key == pygame.K_e:
                 funcfield.interact()
+
+            if key == pygame.K_i:
+                var.state = 'info'
+
+        elif var.state == 'info':
+            if key == pygame.K_i:
+                var.state = ''
 
 def key_up(key):
     pass

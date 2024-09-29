@@ -41,6 +41,19 @@ def draw_field():
     rect_player = [var.Field.position_player[0] - var.Field.camera[0] - 20, var.Field.position_player[1] - var.Field.camera[1] - 20, 40, 40]
     pygame.draw.rect(var.screen, const.Color.black, rect_player, 2)
 
+def draw_info():
+    pygame.draw.rect(var.screen, const.Color.white, UI.Field.Info.rect)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.rect, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.button_close, 2)
+
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_profile, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_card, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_deck, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_equipment, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_item, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_map, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.tab_progress, 2)
+
 def draw_adventure_confirm():
     pygame.draw.rect(var.screen, const.Color.white, UI.Field.Confirm.rect)
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Confirm.rect, 2)
@@ -67,5 +80,13 @@ def draw_save():
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.button_no, 2)
     var.screen.blit(asset.Font.main_32.render('No', False, const.Color.black), UI.Field.Save.text_no)
 
-def draw_info():
-    pass
+def draw_game_start():
+    pygame.draw.rect(var.screen, const.Color.white, UI.Game.Start.rect)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.rect, 2)
+
+    var.screen.blit(asset.Font.main_32.render('Start', const.Color.black, False), UI.Game.Start.text_title)
+    for i in range(3):
+        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.button_select[i], 2)
+    
+    pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.button_start, 2)
+    var.screen.blit(asset.Font.main_32.render('Start', const.Color.black, False), UI.Game.Start.text_start)
