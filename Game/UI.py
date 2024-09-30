@@ -22,6 +22,27 @@ class Field():
         tab_map = [480, 80, 80, 80]
         tab_progress = [560, 80, 80, 80]
 
+        class Profile():
+            pass
+
+        class Card():
+            pass
+
+        class Deck():
+            pass
+
+        class Equipment():
+            pass
+
+        class Item():
+            pass
+
+        class Map():
+            pass
+
+        class Progress():
+            pass
+
     class Menu():
         rect = [320, 240, 640, 240]
         text_pause = [328, 264]
@@ -55,3 +76,10 @@ class Game():
         ]
         button_start = [560, 480, 160, 80]
         text_start = [568, 504]
+
+class Card():
+    rect = [0, 0, 160, 240]
+    image_card = [40, 40, 80, 80]
+    text_name = [4, 122]
+    text_attack = [24, 204]
+    text_life = [124, 204]

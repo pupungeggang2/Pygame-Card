@@ -16,19 +16,18 @@ def load_data():
     f = open('Data/card.txt', 'r')
     data.card = ast.literal_eval(f.read())
     f.close()
-
+    f = open('Data/crystal.txt', 'r')
+    data.crystal = ast.literal_eval(f.read())
+    f.close()
     f = open('Data/equipment.txt', 'r')
     data.equipment = ast.literal_eval(f.read())
     f.close()
-
     f = open('Data/field.txt', 'r')
     data.field = ast.literal_eval(f.read())
     f.close()
-
     f = open('Data/item.txt', 'r')
     data.item = ast.literal_eval(f.read())
     f.close()
-
     f = open('Data/monster.txt', 'r')
     data.monster = ast.literal_eval(f.read())
     f.close()
@@ -36,9 +35,11 @@ def load_data():
 def load_asset():
     try:
         asset.Font.main_32 = pygame.font.Font('Font/neodgm.ttf', 32)
+        asset.Font.main_16 = pygame.font.Font('Font/neodgm.ttf', 16)
 
     except:
         asset.Font.main_32 = pygame.font.SysFont(None, 32)
+        asset.Font.main_16 = pygame.font.SysFont(None, 16)
 
     asset.Image.connection = pygame.image.load('Image/Connection.png')
     asset.Image.monster = pygame.image.load('Image/Monster.png')

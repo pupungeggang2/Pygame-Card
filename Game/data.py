@@ -1,4 +1,5 @@
 card = {}
+crystal = {}
 monster = {}
 equipment = {}
 item = {}

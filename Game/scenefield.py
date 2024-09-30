@@ -28,7 +28,7 @@ def display():
 
     var.screen.blit(asset.Font.main_32.render(var.Field.place, False, const.Color.black), UI.Field.text_place)
     var.screen.blit(asset.Image.Button.menu, UI.Field.button_menu[:2])
-    var.screen.blit(asset.Font.main_32.render('[E] Interact [I] Info', False, const.Color.black), UI.Field.text_tip)
+    var.screen.blit(asset.Font.main_32.render('[E] Interact [I] Info [Z] Adventure', False, const.Color.black), UI.Field.text_tip)
     var.screen.blit(asset.Image.Button.info, UI.Field.button_info[:2])
     
     pygame.display.flip()
@@ -42,6 +42,7 @@ def mouse_up(x, y, button):
             if var.state == '':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.button_info):
                     var.state = 'info'
+                    var.tab_field = 'profile'
 
             elif var.state == 'info':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_close):
@@ -50,10 +51,7 @@ def mouse_up(x, y, button):
             if var.state == 'adventure_confirm_start':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
                     var.state = ''
-                    var.Adventure.adventure = True
-                    var.Field.place = var.Field.destination_place
-                    funcfield.load_field(var.Field.place)
-                    var.Field.position_player = var.Field.destination_position
+                    funcfield.adventure_init()
 
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_no):
                     var.state = ''
@@ -61,10 +59,7 @@ def mouse_up(x, y, button):
             elif var.state == 'adventure_confirm_end':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
                     var.state = ''
-                    var.Adventure.adventure = False
-                    var.Field.place = var.Field.destination_place
-                    funcfield.load_field(var.Field.place)
-                    var.Field.position_player = var.Field.destination_position
+                    funcfield.adventure_end()
 
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_no):
                     var.state = ''
@@ -95,10 +90,29 @@ def key_down(key):
 
             if key == pygame.K_i:
                 var.state = 'info'
+                var.tab_field = 'profile'
 
         elif var.state == 'info':
             if key == pygame.K_i:
                 var.state = ''
+
+        if var.state == 'adventure_confirm_start':
+            if key == pygame.K_y:
+                var.state = ''
+                funcfield.adventure_init()
+
+            elif key == pygame.K_n:
+                var.state = ''
+                funcfield.adventure_end()
+
+        elif var.state == 'adventure_confirm_end':
+            if key == pygame.K_y:
+                var.state = ''
+                funcfield.adventure_init()
+
+            elif key == pygame.K_n:
+                var.state = ''
+                funcfield.adventure_end()
 
 def key_up(key):
     pass

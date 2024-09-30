@@ -1,5 +1,6 @@
 class Font():
     main_32 = None
+    main_16 = None
 
 class Image():
     save = None

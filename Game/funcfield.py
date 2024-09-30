@@ -1,7 +1,7 @@
 import pygame, ast
 import random
 import asset, UI, data, const, var
-import funcphysics
+import funcphysics, funcgame
 
 def field_init():
     var.Field.place = var.save['place']
@@ -54,6 +54,7 @@ def collision_check():
                 var.Field.field['event'].pop(i)
                 var.scene = 'game'
                 var.state = 'start'
+                funcgame.game_init()
                 break
 
 def interact():
@@ -80,3 +81,25 @@ def interact():
 
         if funcphysics.point_inside_rect_array(var.Field.position_player[0], var.Field.position_player[1], thing[0]):
             var.state = 'save'
+
+def adventure_init():
+    var.Adventure.adventure = True
+    var.Field.place = var.Field.destination_place
+    load_field(var.Field.place)
+    var.Field.position_player = var.Field.destination_position
+
+    var.Adventure.deck_card = []
+    var.Adventure.deck_crystal = []
+
+    if var.Player.selected_deck == -1:
+        for i in range(len(var.Player.basic_deck['card'])):
+            var.Adventure.deck_card.append(ast.literal_eval(str(data.card[var.Player.basic_deck['card'][i]])))
+
+        for i in range(len(var.Player.basic_deck['crystal'])):
+            var.Adventure.deck_crystal.append(ast.literal_eval(str(data.crystal[var.Player.basic_deck['crystal'][i]])))
+
+def adventure_end():
+    var.Adventure.adventure = False
+    var.Field.place = var.Field.destination_place
+    load_field(var.Field.place)
+    var.Field.position_player = var.Field.destination_position

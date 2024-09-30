@@ -9,6 +9,8 @@ scene = 'title'
 state = ''
 menu = False
 
+tab_field = ''
+
 keyboard = {
     'left' : False, 'right' : False, 'up' : False, 'down' : False
 }
@@ -23,12 +25,32 @@ class Field():
 
 class Adventure():
     adventure = False
+    deck_card = [
+
+    ]
+    deck_crystal = [
+
+    ]
 
 class Player():
+    basic_deck = {
+        'card' : [1, 1, 1, 2, 2, 2, 3, 3, 3],
+        'crystal' : [1, 1, 1, 1, 1, 1, 1, 1]
+    }
     card = []
+    deck = []
+    selected_deck = -1
     equipment = []
     item = []
 
 class Game():
     turn = 0
     turn_who = 0
+
+    start_hand_change = [False, False, False]
+    deck_card = []
+    deck_crystal = []
+    hand_card = []
+    hand_crystal = []
+
+    field = []

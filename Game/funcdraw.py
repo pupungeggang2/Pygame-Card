@@ -65,9 +65,9 @@ def draw_adventure_confirm():
         var.screen.blit(asset.Font.main_32.render('End Adventure?', False, const.Color.black), UI.Field.Confirm.text_title)
 
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Confirm.button_yes, 2)
-    var.screen.blit(asset.Font.main_32.render('Yes', False, const.Color.black), UI.Field.Confirm.text_yes)
+    var.screen.blit(asset.Font.main_32.render('Yes [Y]', False, const.Color.black), UI.Field.Confirm.text_yes)
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Confirm.button_no, 2)
-    var.screen.blit(asset.Font.main_32.render('No', False, const.Color.black), UI.Field.Confirm.text_no)
+    var.screen.blit(asset.Font.main_32.render('No [N]', False, const.Color.black), UI.Field.Confirm.text_no)
 
 def draw_save():
     pygame.draw.rect(var.screen, const.Color.white, UI.Field.Save.rect)
@@ -76,17 +76,43 @@ def draw_save():
     var.screen.blit(asset.Font.main_32.render('Save Data?', False, const.Color.black), UI.Field.Save.text_title)
 
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.button_yes, 2)
-    var.screen.blit(asset.Font.main_32.render('Yes', False, const.Color.black), UI.Field.Save.text_yes)
+    var.screen.blit(asset.Font.main_32.render('Yes [Y]', False, const.Color.black), UI.Field.Save.text_yes)
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.button_no, 2)
-    var.screen.blit(asset.Font.main_32.render('No', False, const.Color.black), UI.Field.Save.text_no)
+    var.screen.blit(asset.Font.main_32.render('No [N]', False, const.Color.black), UI.Field.Save.text_no)
 
 def draw_game_start():
     pygame.draw.rect(var.screen, const.Color.white, UI.Game.Start.rect)
     pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.rect, 2)
 
     var.screen.blit(asset.Font.main_32.render('Start', const.Color.black, False), UI.Game.Start.text_title)
+
     for i in range(3):
-        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.button_select[i], 2)
+        draw_card(var.Game.deck_card[i], [UI.Game.Start.button_select[i][0], UI.Game.Start.button_select[i][1]])
+
+        if var.Game.start_hand_change[i] == True:
+            pygame.draw.rect(var.screen, const.Color.green, UI.Game.Start.button_select[i], 2)
     
     pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.button_start, 2)
     var.screen.blit(asset.Font.main_32.render('Start', const.Color.black, False), UI.Game.Start.text_start)
+
+def draw_game_field():
+    pass
+
+def draw_game_lower():
+    pass
+
+## Etc
+
+def draw_card(card, position):
+    temp_rect = [position[0], position[1], UI.Card.rect[2], UI.Card.rect[3]]
+    pygame.draw.rect(var.screen, const.Color.black, temp_rect, 2)
+    temp_image = [position[0] + UI.Card.image_card[0], position[1] + UI.Card.image_card[1], UI.Card.image_card[2], UI.Card.image_card[3]]
+    pygame.draw.rect(var.screen, const.Color.black, temp_image, 2)
+    temp_text_name = [position[0] + UI.Card.text_name[0], position[1] + UI.Card.text_name[1]]
+    var.screen.blit(asset.Font.main_16.render(f'{card['name']}', False, const.Color.black), temp_text_name)
+
+    if card['type'] == 'unit':
+        temp_text_attack = [position[0] + UI.Card.text_attack[0], position[1] + UI.Card.text_attack[1]]
+        var.screen.blit(asset.Font.main_32.render(f'{card['stat'][0]}', False, const.Color.black), temp_text_attack)
+        temp_text_life = [position[0] + UI.Card.text_life[0], position[1] + UI.Card.text_life[1]]
+        var.screen.blit(asset.Font.main_32.render(f'{card['stat'][1]}', False, const.Color.black), temp_text_life)
