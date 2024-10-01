@@ -89,22 +89,29 @@ def draw_game_start():
     for i in range(3):
         draw_card(var.Game.deck_card[i], [UI.Game.Start.button_select[i][0], UI.Game.Start.button_select[i][1]])
 
-        if var.Game.start_hand_change[i] == True:
-            pygame.draw.rect(var.screen, const.Color.green, UI.Game.Start.button_select[i], 2)
+        if var.state == 'start':
+            if var.Game.start_hand_change[i] == True:
+                pygame.draw.rect(var.screen, const.Color.green, UI.Game.Start.button_select[i], 2)
     
     pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.button_start, 2)
     var.screen.blit(asset.Font.main_32.render('Start', const.Color.black, False), UI.Game.Start.text_start)
 
 def draw_game_field():
-    pass
+    for i in range(14):
+        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Field.unit[i], 2)
 
 def draw_game_lower():
-    pass
+    for i in range(len(var.Game.hand_card)):
+        draw_card(var.Game.hand_card[i], [UI.Game.Lower.hand_card[i][0], UI.Game.Lower.hand_card[i][1]])
+
+    for i in range(len(var.Game.hand_crystal)):
+        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.crystal[i], 2)
 
 ## Etc
 
 def draw_card(card, position):
     temp_rect = [position[0], position[1], UI.Card.rect[2], UI.Card.rect[3]]
+    pygame.draw.rect(var.screen, const.Color.white, temp_rect)
     pygame.draw.rect(var.screen, const.Color.black, temp_rect, 2)
     temp_image = [position[0] + UI.Card.image_card[0], position[1] + UI.Card.image_card[1], UI.Card.image_card[2], UI.Card.image_card[3]]
     pygame.draw.rect(var.screen, const.Color.black, temp_image, 2)

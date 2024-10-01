@@ -47,6 +47,10 @@ class Game():
     turn = 0
     turn_who = 0
 
+    power = 0
+    energy = 0
+    crystal_max = 1
+
     start_hand_change = [False, False, False]
     deck_card = []
     deck_crystal = []

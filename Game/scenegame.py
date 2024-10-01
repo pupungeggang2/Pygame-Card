@@ -8,6 +8,9 @@ def loop():
 def display():
     var.screen.fill(const.Color.white)
 
+    funcdraw.draw_game_field()
+    funcdraw.draw_game_lower()
+
     if var.state == 'start' or var.state == 'start_confirm':
         funcdraw.draw_game_start()
 
@@ -32,6 +35,8 @@ def mouse_up(x, y, button):
 
             elif var.state == 'start_confirm':
                 if funcphysics.point_inside_rect_array(x, y, UI.Game.Start.button_start):
+                    funcgame.turn_start_first()
+                    funcgame.turn_start()
                     var.state = ''
 
 def key_down(key):
