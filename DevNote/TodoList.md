@@ -8,8 +8,8 @@
 ## Managing Save
 
 [v] Save init.
-[ ] Saving data.
-[ ] Loading data.
+[v] Saving data.
+[v] Loading data.
 [ ] Erasing data.
 
 ## Loading Assets
@@ -39,11 +39,17 @@
 
 [ ] Info page layout.
 [ ] Info page tabs.
+[ ] Profile.
+[ ] Deck.
 [ ] Collection.
 [ ] Map.
-[ ] Start Deck Building.
 
 ## Game Part
+
+### Displaying Game part
+
+[ ] Field.
+[ ] Lower part.
 
 ### Basic Deck Manipulation
 
@@ -55,3 +61,6 @@
 
 [ ] Start hand change.
 [ ] Starting the first turn.
+[ ] Checking whether player can play a card.
+[ ] Processing card.
+[ ] Battle over.

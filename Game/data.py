@@ -4,3 +4,4 @@ monster = {}
 equipment = {}
 item = {}
 field = {}
+deck = {}

@@ -19,17 +19,25 @@ class Field():
         tab_deck = [240, 80, 80, 80]
         tab_equipment = [320, 80, 80, 80]
         tab_item = [400, 80, 80, 80]
-        tab_map = [480, 80, 80, 80]
+        tab_place = [480, 80, 80, 80]
         tab_progress = [560, 80, 80, 80]
+        button_prev = [920, 560, 40, 40]
+        text_page = [964, 564]
+        button_next = [1080, 560, 80, 80]
+        description_rect = []
 
         class Profile():
             pass
 
         class Card():
-            pass
-
+            item_start = [80, 160]
+            item_size = [160, 240]
+            item_interval = [160, 240]
+            
         class Deck():
-            pass
+            item_start = [80, 160]
+            item_size = [160, 240]
+            item_interval = [160, 240]
 
         class Equipment():
             pass
@@ -37,7 +45,7 @@ class Field():
         class Item():
             pass
 
-        class Map():
+        class Place():
             pass
 
         class Progress():
@@ -101,6 +109,8 @@ class Game():
 
 class Card():
     rect = [0, 0, 160, 240]
+    crystal = [[0, 0], [40, 0], [80, 0], [120, 0]]
+    text_crystal = [[16, 4], [46, 4], [96, 4], [136, 4]]
     image_card = [40, 40, 80, 80]
     text_name = [4, 122]
     text_attack = [24, 204]

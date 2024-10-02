@@ -28,7 +28,7 @@ def display():
 
     var.screen.blit(asset.Font.main_32.render(var.Field.place, False, const.Color.black), UI.Field.text_place)
     var.screen.blit(asset.Image.Button.menu, UI.Field.button_menu[:2])
-    var.screen.blit(asset.Font.main_32.render('[E] Interact [I] Info [Z] Adventure', False, const.Color.black), UI.Field.text_tip)
+    var.screen.blit(asset.Font.main_32.render('[E] Interact [I] Info', False, const.Color.black), UI.Field.text_tip)
     var.screen.blit(asset.Image.Button.info, UI.Field.button_info[:2])
     
     pygame.display.flip()
@@ -41,14 +41,43 @@ def mouse_up(x, y, button):
 
             if var.state == '':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.button_info):
-                    var.state = 'info'
-                    var.tab_field = 'profile'
+                    if var.Adventure.adventure == False:
+                        var.state = 'info'
+                        var.tab_field = 'profile'
+                    else:
+                        var.state = 'info_adventure'
+                        var.tab_adventure = 'deck'
 
             elif var.state == 'info':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_close):
                     var.state = ''
 
-            if var.state == 'adventure_confirm_start':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_profile):
+                    var.tab_field = 'profile'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_deck):
+                    var.tab_field = 'deck'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_card):
+                    var.tab_field = 'card'
+                    funcfield.create_card_list()
+                    var.card_display_page = 0
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_equipment):
+                    var.tab_field = 'equipment'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_item):
+                    var.tab_field = 'item'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_place):
+                    var.tab_field = 'place'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_progress):
+                    var.tab_field = 'progress'
+
+                if var.tab_field == 'card':
+                    if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_next):
+                        if var.card_display_page < len(var.card_display_list) // 8:
+                            var.card_display_page += 1
+                    elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_prev):
+                        if var.card_display_page > 0:
+                            var.card_display_page -= 1
+
+            elif var.state == 'adventure_confirm_start':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
                     var.state = ''
                     funcfield.adventure_init()
@@ -89,8 +118,12 @@ def key_down(key):
                 funcfield.interact()
 
             if key == pygame.K_i:
-                var.state = 'info'
-                var.tab_field = 'profile'
+                if var.Adventure.adventure == False:
+                        var.state = 'info'
+                        var.tab_field = 'profile'
+                else:
+                    var.state = 'info_adventure'
+                    var.tab_adventure = 'deck'
 
         elif var.state == 'info':
             if key == pygame.K_i:

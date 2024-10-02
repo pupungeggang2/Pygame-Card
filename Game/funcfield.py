@@ -22,6 +22,12 @@ def load_field(place):
         temp_type = random.choice(['shop', 'mystery'])
         var.Field.field['event'].append({'type' : temp_type, 'position' : temp_position})
 
+def create_card_list():
+    var.card_display_list = []
+
+    for card in data.card:
+        var.card_display_list.append(card)
+
 def field_tick():
     move_player()
     collision_check()
@@ -87,16 +93,17 @@ def adventure_init():
     var.Field.place = var.Field.destination_place
     load_field(var.Field.place)
     var.Field.position_player = var.Field.destination_position
+    temp_deck = ast.literal_eval(str(data.deck[var.Player.selected_deck]))
 
     var.Adventure.deck_card = []
     var.Adventure.deck_crystal = []
+    var.Adventure.element = temp_deck['element']
 
-    if var.Player.selected_deck == -1:
-        for i in range(len(var.Player.basic_deck['card'])):
-            var.Adventure.deck_card.append(ast.literal_eval(str(data.card[var.Player.basic_deck['card'][i]])))
+    for i in range(len(temp_deck['card'])):
+        var.Adventure.deck_card.append(ast.literal_eval(str(data.card[temp_deck['card'][i]])))
 
-        for i in range(len(var.Player.basic_deck['crystal'])):
-            var.Adventure.deck_crystal.append(ast.literal_eval(str(data.crystal[var.Player.basic_deck['crystal'][i]])))
+    for i in range(len(temp_deck['crystal'])):
+        var.Adventure.deck_crystal.append(ast.literal_eval(str(data.crystal[temp_deck['crystal'][i]])))
 
 def adventure_end():
     var.Adventure.adventure = False

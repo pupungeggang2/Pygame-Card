@@ -13,6 +13,9 @@ def init():
     load_save()
 
 def load_data():
+    f = open('Data/deck.txt', 'r')
+    data.deck = ast.literal_eval(f.read())
+    f.close()
     f = open('Data/card.txt', 'r')
     data.card = ast.literal_eval(f.read())
     f.close()
@@ -48,8 +51,22 @@ def load_asset():
 
     asset.Image.save = pygame.image.load('Image/Save.png')
 
+    for crystal in data.crystal:
+        asset.Image.crystal[crystal] = pygame.image.load(f'Image/Crystal{str(crystal).zfill(3)}.png')
+
     asset.Image.Button.menu = pygame.image.load('Image/ButtonMenu.png')
     asset.Image.Button.info = pygame.image.load('Image/ButtonInfo.png')
+    asset.Image.Button.close = pygame.image.load('Image/ButtonClose.png')
+    asset.Image.Button.prev = pygame.image.load('Image/ButtonPrev.png')
+    asset.Image.Button.next = pygame.image.load('Image/ButtonNext.png')
+
+    asset.Image.Tab.profile = pygame.image.load('Image/TabProfile.png')
+    asset.Image.Tab.deck = pygame.image.load('Image/TabDeck.png')
+    asset.Image.Tab.card = pygame.image.load('Image/TabCard.png')
+    asset.Image.Tab.equipment = pygame.image.load('Image/TabEquipment.png')
+    asset.Image.Tab.item = pygame.image.load('Image/TabItem.png')
+    asset.Image.Tab.place = pygame.image.load('Image/TabPlace.png')
+    asset.Image.Tab.progress = pygame.image.load('Image/TabProgress.png')
 
 def load_save():
     try:

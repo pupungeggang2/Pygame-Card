@@ -9,6 +9,21 @@ class Image():
     mystery = None
     field_shop = None
 
+    card = {}
+    crystal = {}
+
     class Button():
         menu = None
         info = None
+        close = None
+        prev = None
+        next = None
+
+    class Tab():
+        profile = None
+        deck = None
+        card = None
+        equipment = None
+        item = None
+        place = None
+        progress = None

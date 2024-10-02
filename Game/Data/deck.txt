@@ -1,0 +1,43 @@
+{
+    0 : {
+        'element' : [],
+        'card' : [1, 1, 1, 2, 2, 2, 3, 3, 3],
+        'crystal' : [1, 1, 1, 1, 1, 1, 1, 1]
+    },
+
+    1 : {
+        'element' : ['fire'],
+        'card' : [],
+        'crystal' : []
+    },
+
+    2 : {
+        'element' : ['water'],
+        'card' : [],
+        'crystal' : []
+    },
+
+    3 : {
+        'element' : ['wind'],
+        'card' : [],
+        'crystal' : []
+    },
+
+    4 : {
+        'element' : ['earth'],
+        'card' : [],
+        'crystal' : []
+    },
+
+    5 : {
+        'element' : ['light'],
+        'card' : [],
+        'crystal' : []
+    },
+
+    6 : {
+        'element' : ['dark'],
+        'card' : [],
+        'crystal' : []
+    }
+}
