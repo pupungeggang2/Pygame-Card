@@ -51,6 +51,24 @@ class Field():
         class Progress():
             pass
 
+    class Info_Adventure():
+        rect = [80, 80, 1120, 560]
+        button_close = [1160, 80, 40, 40]
+
+        tab_profile = [80, 80, 80, 80]
+        tab_deck = [160, 80, 80, 80]
+        button_prev = [920, 560, 40, 40]
+        text_page = [964, 564]
+        button_next = [1080, 560, 80, 80]
+
+        class Profile():
+            pass
+
+        class Deck():
+            item_start = [80, 160]
+            item_size = [160, 240]
+            item_interval = [160, 240]
+
     class Menu():
         rect = [320, 240, 640, 240]
         text_pause = [328, 264]
@@ -115,3 +133,6 @@ class Card():
     text_name = [4, 122]
     text_attack = [24, 204]
     text_life = [124, 204]
+
+class Equipment():
+    rect = [0, 0, 160, 240]

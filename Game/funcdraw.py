@@ -57,13 +57,28 @@ def draw_info():
     if var.tab_field == 'card':
         for i in range(2):
             for j in range(5):
-                index = 10 * var.card_display_page + i * 4 + j
+                index = 10 * var.card_display_page + i * 5 + j
                 if index < len(var.card_display_list):
                     draw_card(data.card[var.card_display_list[index]], [UI.Field.Info.Card.item_start[0] + UI.Field.Info.Card.item_interval[0] * j, UI.Field.Info.Card.item_start[1] + UI.Field.Info.Card.item_interval[1] * i])
 
         var.screen.blit(asset.Image.Button.prev, UI.Field.Info.button_prev)
         var.screen.blit(asset.Font.main_32.render(f'{var.card_display_page + 1}/{len(var.card_display_list) // 8 + 1}', False, const.Color.black), UI.Field.Info.text_page)
         var.screen.blit(asset.Image.Button.next, UI.Field.Info.button_next)
+
+def draw_info_adventure():
+    pygame.draw.rect(var.screen, const.Color.white, UI.Field.Info_Adventure.rect)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info_Adventure.rect, 2)
+    var.screen.blit(asset.Image.Button.close, UI.Field.Info_Adventure.button_close)
+
+    var.screen.blit(asset.Image.Tab.profile, UI.Field.Info_Adventure.tab_profile)
+    var.screen.blit(asset.Image.Tab.deck, UI.Field.Info_Adventure.tab_deck)
+
+    if var.tab_adventure == 'deck':
+        for i in range(2):
+            for j in range(5):
+                index = 10 * var.deck_card_display_page + i * 5 + j
+                if index < len(var.Adventure.deck_card):
+                    draw_card(var.Adventure.deck_card[index], [UI.Field.Info_Adventure.Deck.item_start[0] + UI.Field.Info_Adventure.Deck.item_interval[0] * j, UI.Field.Info_Adventure.Deck.item_start[1] + UI.Field.Info_Adventure.Deck.item_interval[1] * i])
 
 def draw_adventure_confirm():
     pygame.draw.rect(var.screen, const.Color.white, UI.Field.Confirm.rect)
@@ -116,7 +131,7 @@ def draw_game_lower():
         draw_card(var.Game.hand_card[i], [UI.Game.Lower.hand_card[i][0], UI.Game.Lower.hand_card[i][1]])
 
     for i in range(len(var.Game.hand_crystal)):
-        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.crystal[i], 2)
+        var.screen.blit(asset.Image.crystal[var.Game.hand_crystal[i]['id']], UI.Game.Lower.crystal[i])
 
 ## Etc
 

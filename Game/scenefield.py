@@ -23,6 +23,9 @@ def display():
     if var.state == 'info':
         funcdraw.draw_info()
 
+    if var.state == 'info_adventure':
+        funcdraw.draw_info_adventure()
+
     if var.menu == True:
         funcdraw.draw_menu_field()
 
@@ -46,7 +49,7 @@ def mouse_up(x, y, button):
                         var.tab_field = 'profile'
                     else:
                         var.state = 'info_adventure'
-                        var.tab_adventure = 'deck'
+                        var.tab_adventure = 'profile'
 
             elif var.state == 'info':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_close):
@@ -76,6 +79,16 @@ def mouse_up(x, y, button):
                     elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_prev):
                         if var.card_display_page > 0:
                             var.card_display_page -= 1
+
+            elif var.state == 'info_adventure':
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.button_close):
+                    var.state = ''
+
+                if funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_profile):
+                    var.tab_adventure = 'profile'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_deck):
+                    var.tab_adventure = 'deck'
+                    var.deck_card_display_page = 0
 
             elif var.state == 'adventure_confirm_start':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):
@@ -123,13 +136,17 @@ def key_down(key):
                         var.tab_field = 'profile'
                 else:
                     var.state = 'info_adventure'
-                    var.tab_adventure = 'deck'
+                    var.tab_adventure = 'profile'
 
         elif var.state == 'info':
             if key == pygame.K_i:
                 var.state = ''
 
-        if var.state == 'adventure_confirm_start':
+        elif var.state == 'info_adventure':
+            if key == pygame.K_i:
+                var.state = ''
+
+        elif var.state == 'adventure_confirm_start':
             if key == pygame.K_y:
                 var.state = ''
                 funcfield.adventure_init()

@@ -35,14 +35,23 @@
 [ ] Adventure start/end.
 [ ] Start equipment.
 
-### Info page
+### Village Info Page
 
 [ ] Info page layout.
 [ ] Info page tabs.
 [ ] Profile.
 [ ] Deck.
+[v] Card.
 [ ] Collection.
 [ ] Map.
+[ ] Progress.
+
+### Adventure Info Page
+
+[ ] Info page layout.
+[ ] Info page tabs.
+[ ] Profile.
+[v] Deck.
 
 ## Game Part
 

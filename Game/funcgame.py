@@ -44,9 +44,9 @@ def start_card_change():
 def draw_card_from_deck():
     if len(var.Game.deck_card) > 0:
         if len(var.Game.hand_card) < 8:
-            var.Game.hand_card.append(var.Game.deck_card.pop())
+            var.Game.hand_card.append(var.Game.deck_card.pop(0))
 
 def draw_crystal_from_deck():
     if len(var.Game.deck_crystal) > 0:
         if len(var.Game.hand_crystal) < 16:
-            var.Game.hand_crystal.append(var.Game.deck_crystal.pop())
+            var.Game.hand_crystal.append(var.Game.deck_crystal.pop(0))
