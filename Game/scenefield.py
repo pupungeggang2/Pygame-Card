@@ -61,8 +61,10 @@ def mouse_up(x, y, button):
                     var.tab_field = 'deck'
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_card):
                     var.tab_field = 'card'
-                    funcfield.create_card_list()
                     var.card_display_page = 0
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_crystal):
+                    var.tab_field = 'crystal'
+                    var.crystal_display_page = 0
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_equipment):
                     var.tab_field = 'equipment'
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_item):
@@ -74,11 +76,19 @@ def mouse_up(x, y, button):
 
                 if var.tab_field == 'card':
                     if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_next):
-                        if var.card_display_page < len(var.card_display_list) // 8:
+                        if var.card_display_page < len(var.card_display_list) // 10:
                             var.card_display_page += 1
                     elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_prev):
                         if var.card_display_page > 0:
                             var.card_display_page -= 1
+
+                elif var.tab_field == 'crystal':
+                    if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_next):
+                        if var.crystal_display_page < len(var.crystal_display_list) // 10:
+                            var.crystal_display_page += 1
+                    elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_prev):
+                        if var.crystal_display_page > 0:
+                            var.crystal_display_page -= 1
 
             elif var.state == 'info_adventure':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.button_close):
@@ -89,6 +99,10 @@ def mouse_up(x, y, button):
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_deck):
                     var.tab_adventure = 'deck'
                     var.deck_card_display_page = 0
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_crystal):
+                    var.tab_adventure = 'crystal'
+                elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_place):
+                    var.tab_adventure = 'place'
 
             elif var.state == 'adventure_confirm_start':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Confirm.button_yes):

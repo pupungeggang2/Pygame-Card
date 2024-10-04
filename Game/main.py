@@ -35,6 +35,16 @@ def load_data():
     data.monster = ast.literal_eval(f.read())
     f.close()
 
+    var.card_display_list = []
+
+    for card in data.card:
+        var.card_display_list.append(card)
+
+    var.crystal_display_list = []
+
+    for crystal in data.crystal:
+        var.crystal_display_list.append(crystal)
+
 def load_asset():
     try:
         asset.Font.main_32 = pygame.font.Font('Font/neodgm.ttf', 32)
@@ -51,8 +61,29 @@ def load_asset():
 
     asset.Image.save = pygame.image.load('Image/Save.png')
 
+    for card in data.card:
+        try:
+            asset.Image.card[card] = pygame.image.load(f'Image/Card{str(card).zfill(3)}.png')
+        except:
+            asset.Image.card[card] = pygame.image.load('Image/TempImage80.png')
+
     for crystal in data.crystal:
-        asset.Image.crystal[crystal] = pygame.image.load(f'Image/Crystal{str(crystal).zfill(3)}.png')
+        try:
+            asset.Image.crystal[crystal] = pygame.image.load(f'Image/Crystal{str(crystal).zfill(3)}.png')
+        except:
+            asset.Image.crystal[crystal] = pygame.image.load('Image/TempImage40.png')
+
+    for equipment in data.equipment:
+        try:
+            asset.Image.equipment[equipment] = pygame.image.load(f'Image/Equipment${str(equipment).zfill(3)}.png')
+        except:
+            asset.Image.equipment[equipment] = pygame.image.load('Image/TempImage80.png')
+
+    for item in data.item:
+        try:
+            asset.Image.item[item] = pygame.image.load(f'Image/Item${str(item).zfill(3)}.png')
+        except:
+            asset.Image.item[item] = pygame.image.load('Image/TempImage80.png')
 
     asset.Image.Button.menu = pygame.image.load('Image/ButtonMenu.png')
     asset.Image.Button.info = pygame.image.load('Image/ButtonInfo.png')
@@ -63,6 +94,7 @@ def load_asset():
     asset.Image.Tab.profile = pygame.image.load('Image/TabProfile.png')
     asset.Image.Tab.deck = pygame.image.load('Image/TabDeck.png')
     asset.Image.Tab.card = pygame.image.load('Image/TabCard.png')
+    asset.Image.Tab.crystal = pygame.image.load('Image/TabCrystal.png')
     asset.Image.Tab.equipment = pygame.image.load('Image/TabEquipment.png')
     asset.Image.Tab.item = pygame.image.load('Image/TabItem.png')
     asset.Image.Tab.place = pygame.image.load('Image/TabPlace.png')

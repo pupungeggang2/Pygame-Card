@@ -22,12 +22,6 @@ def load_field(place):
         temp_type = random.choice(['shop', 'mystery'])
         var.Field.field['event'].append({'type' : temp_type, 'position' : temp_position})
 
-def create_card_list():
-    var.card_display_list = []
-
-    for card in data.card:
-        var.card_display_list.append(card)
-
 def field_tick():
     move_player()
     collision_check()

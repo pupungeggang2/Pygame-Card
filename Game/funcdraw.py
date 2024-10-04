@@ -49,12 +49,18 @@ def draw_info():
     var.screen.blit(asset.Image.Tab.profile, UI.Field.Info.tab_profile)
     var.screen.blit(asset.Image.Tab.deck, UI.Field.Info.tab_deck)
     var.screen.blit(asset.Image.Tab.card, UI.Field.Info.tab_card)
+    var.screen.blit(asset.Image.Tab.crystal, UI.Field.Info.tab_crystal)
     var.screen.blit(asset.Image.Tab.equipment, UI.Field.Info.tab_equipment)
     var.screen.blit(asset.Image.Tab.item, UI.Field.Info.tab_item)
     var.screen.blit(asset.Image.Tab.place, UI.Field.Info.tab_place)
     var.screen.blit(asset.Image.Tab.progress, UI.Field.Info.tab_progress)
 
-    if var.tab_field == 'card':
+    if var.tab_field == 'profile':
+        pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.Profile.profile_image, 2)
+        pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.Profile.icon_gold, 2)
+        var.screen.blit(asset.Font.main_32.render(f'{var.Player.gold}', False, const.Color.black), UI.Field.Info.Profile.text_gold)
+
+    elif var.tab_field == 'card':
         for i in range(2):
             for j in range(5):
                 index = 10 * var.card_display_page + i * 5 + j
@@ -65,6 +71,40 @@ def draw_info():
         var.screen.blit(asset.Font.main_32.render(f'{var.card_display_page + 1}/{len(var.card_display_list) // 8 + 1}', False, const.Color.black), UI.Field.Info.text_page)
         var.screen.blit(asset.Image.Button.next, UI.Field.Info.button_next)
 
+    elif var.tab_field == 'crystal':
+        for i in range(2):
+            for j in range(5):
+                index = 10 * var.crystal_display_page + i * 5 + j
+                if index < len(var.crystal_display_list):
+                    draw_crystal(data.crystal[var.crystal_display_list[index]], [UI.Field.Info.Crystal.item_start[0] + UI.Field.Info.Crystal.item_interval[0] * j, UI.Field.Info.Crystal.item_start[1] + UI.Field.Info.Crystal.item_interval[1] * i])
+
+        var.screen.blit(asset.Image.Button.prev, UI.Field.Info.button_prev)
+        var.screen.blit(asset.Font.main_32.render(f'{var.crystal_display_page + 1}/{len(var.crystal_display_list) // 8 + 1}', False, const.Color.black), UI.Field.Info.text_page)
+        var.screen.blit(asset.Image.Button.next, UI.Field.Info.button_next)
+
+    elif var.tab_field == 'equipment':
+        pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.Equipment.description_box, 2)
+
+    elif var.tab_field == 'item':
+        pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.Item.description_box, 2)
+
+    elif var.tab_field == 'place':
+        temp_surface = pygame.Surface((UI.Field.Info.Place.rect[2], UI.Field.Info.Place.rect[3]))
+        temp_surface.fill(const.Color.white)
+        pygame.draw.rect(temp_surface, const.Color.black, UI.Field.Info.Place.rect, 2)
+
+        for place in const.place_display:
+            if data.field[place]['village'] == False:
+                pygame.draw.rect(temp_surface, const.Color.black, const.place_display[place], 2)
+            else:
+                pygame.draw.rect(temp_surface, const.Color.blue, const.place_display[place], 4)
+
+        pygame.draw.rect(temp_surface, const.Color.green, const.place_display[var.Field.place], 4)
+        var.screen.blit(temp_surface, UI.Field.Info.Place.position)
+
+    elif var.tab_field == 'progress':
+        pass
+
 def draw_info_adventure():
     pygame.draw.rect(var.screen, const.Color.white, UI.Field.Info_Adventure.rect)
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info_Adventure.rect, 2)
@@ -72,6 +112,13 @@ def draw_info_adventure():
 
     var.screen.blit(asset.Image.Tab.profile, UI.Field.Info_Adventure.tab_profile)
     var.screen.blit(asset.Image.Tab.deck, UI.Field.Info_Adventure.tab_deck)
+    var.screen.blit(asset.Image.Tab.crystal, UI.Field.Info_Adventure.tab_crystal)
+    var.screen.blit(asset.Image.Tab.place, UI.Field.Info_Adventure.tab_place)
+
+    if var.tab_adventure == 'profile':
+        pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.Profile.profile_image, 2)
+        pygame.draw.rect(var.screen, const.Color.black, UI.Field.Info.Profile.icon_gold, 2)
+        var.screen.blit(asset.Font.main_32.render(f'{var.Player.gold}', False, const.Color.black), UI.Field.Info.Profile.text_gold)
 
     if var.tab_adventure == 'deck':
         for i in range(2):
@@ -79,6 +126,20 @@ def draw_info_adventure():
                 index = 10 * var.deck_card_display_page + i * 5 + j
                 if index < len(var.Adventure.deck_card):
                     draw_card(var.Adventure.deck_card[index], [UI.Field.Info_Adventure.Deck.item_start[0] + UI.Field.Info_Adventure.Deck.item_interval[0] * j, UI.Field.Info_Adventure.Deck.item_start[1] + UI.Field.Info_Adventure.Deck.item_interval[1] * i])
+
+    elif var.tab_adventure == 'place':
+        temp_surface = pygame.Surface((UI.Field.Info.Place.rect[2], UI.Field.Info.Place.rect[3]))
+        temp_surface.fill(const.Color.white)
+        pygame.draw.rect(temp_surface, const.Color.black, UI.Field.Info.Place.rect, 2)
+
+        for place in const.place_display:
+            if data.field[place]['village'] == False:
+                pygame.draw.rect(temp_surface, const.Color.black, const.place_display[place], 2)
+            else:
+                pygame.draw.rect(temp_surface, const.Color.blue, const.place_display[place], 4)
+
+        pygame.draw.rect(temp_surface, const.Color.green, const.place_display[var.Field.place], 4)
+        var.screen.blit(temp_surface, UI.Field.Info.Place.position)
 
 def draw_adventure_confirm():
     pygame.draw.rect(var.screen, const.Color.white, UI.Field.Confirm.rect)
@@ -106,6 +167,8 @@ def draw_save():
     pygame.draw.rect(var.screen, const.Color.black, UI.Field.Save.button_no, 2)
     var.screen.blit(asset.Font.main_32.render('No [N]', False, const.Color.black), UI.Field.Save.text_no)
 
+# Game
+
 def draw_game_start():
     pygame.draw.rect(var.screen, const.Color.white, UI.Game.Start.rect)
     pygame.draw.rect(var.screen, const.Color.black, UI.Game.Start.rect, 2)
@@ -130,33 +193,46 @@ def draw_game_lower():
     for i in range(len(var.Game.hand_card)):
         draw_card(var.Game.hand_card[i], [UI.Game.Lower.hand_card[i][0], UI.Game.Lower.hand_card[i][1]])
 
+    pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.description_box, 2)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.crystal_box, 2)
+
     for i in range(len(var.Game.hand_crystal)):
         var.screen.blit(asset.Image.crystal[var.Game.hand_crystal[i]['id']], UI.Game.Lower.crystal[i])
+
+    for i in range(6):
+        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.equipment[i], 2)
+
+    for i in range(2):
+        pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.item[i], 2)
+
+    pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.button_turn_end, 2)
+    var.screen.blit(asset.Font.main_32.render('Turn End', False, const.Color.black), UI.Game.Lower.text_turn_end)
 
 ## Etc
 
 def draw_card(card, position):
-    temp_rect = [position[0], position[1], UI.Card.rect[2], UI.Card.rect[3]]
-    pygame.draw.rect(var.screen, const.Color.white, temp_rect)
-    pygame.draw.rect(var.screen, const.Color.black, temp_rect, 2)
-    temp_image = [position[0] + UI.Card.image_card[0], position[1] + UI.Card.image_card[1], UI.Card.image_card[2], UI.Card.image_card[3]]
-    pygame.draw.rect(var.screen, const.Color.black, temp_image, 2)
-    temp_text_name = [position[0] + UI.Card.text_name[0], position[1] + UI.Card.text_name[1]]
-    var.screen.blit(asset.Font.main_16.render(f'{card['name']}', False, const.Color.black), temp_text_name)
-
-    crystal_index = 0
+    temp_surface = pygame.Surface((UI.Card.rect[2], UI.Card.rect[3]))
+    pygame.draw.rect(temp_surface, const.Color.white, UI.Card.rect)
+    pygame.draw.rect(temp_surface, const.Color.black, UI.Card.rect, 2)
+    pygame.draw.rect(temp_surface, const.Color.black, UI.Card.image_card, 2)
+    temp_surface.blit(asset.Font.main_16.render(f'{card['name']}', False, const.Color.black), UI.Card.text_name)
 
     for i in range(len(card['crystal'])):
-        temp_crystal_position = [position[0] + UI.Card.crystal[crystal_index][0], position[1] + UI.Card.crystal[crystal_index][1]]
-        temp_crystal_text = [position[0] + UI.Card.text_crystal[crystal_index][0], position[1] + UI.Card.text_crystal[crystal_index][1]]
         if card['crystal'][i][0] == 'any':
-            var.screen.blit(asset.Image.crystal[1], temp_crystal_position)
-        
-        var.screen.blit(asset.Font.main_32.render(f'{card['crystal'][i][1]}', False, const.Color.black), temp_crystal_text)
-        crystal_index += 1
+            temp_surface.blit(asset.Image.crystal[1], UI.Card.crystal[i])
+        temp_surface.blit(asset.Font.main_32.render(f'{card['crystal'][i][1]}', False, const.Color.black), UI.Card.text_crystal[i])
 
     if card['type'] == 'unit':
-        temp_text_attack = [position[0] + UI.Card.text_attack[0], position[1] + UI.Card.text_attack[1]]
-        var.screen.blit(asset.Font.main_32.render(f'{card['stat'][0]}', False, const.Color.black), temp_text_attack)
-        temp_text_life = [position[0] + UI.Card.text_life[0], position[1] + UI.Card.text_life[1]]
-        var.screen.blit(asset.Font.main_32.render(f'{card['stat'][1]}', False, const.Color.black), temp_text_life)
+        temp_surface.blit(asset.Font.main_32.render(f'{card['stat'][0]}', False, const.Color.black), UI.Card.text_attack)
+        temp_surface.blit(asset.Font.main_32.render(f'{card['stat'][1]}', False, const.Color.black), UI.Card.text_life)
+
+    var.screen.blit(temp_surface, position)
+
+def draw_crystal(crystal, position):
+    temp_surface = pygame.Surface((UI.Crystal.rect[2], UI.Crystal.rect[3]))
+    pygame.draw.rect(temp_surface, const.Color.white, UI.Crystal.rect)
+    pygame.draw.rect(temp_surface, const.Color.black, UI.Crystal.rect, 2)
+    temp_surface.blit(asset.Image.crystal[crystal['id']], UI.Crystal.image_crystal)
+    temp_surface.blit(asset.Font.main_16.render(f'{crystal['name']}', False, const.Color.black), UI.Crystal.text_name)
+
+    var.screen.blit(temp_surface, position)

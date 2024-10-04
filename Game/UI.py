@@ -16,37 +16,52 @@ class Field():
         button_close = [1160, 80, 40, 40]
         tab_profile = [80, 80, 80, 80]
         tab_card = [160, 80, 80, 80]
-        tab_deck = [240, 80, 80, 80]
-        tab_equipment = [320, 80, 80, 80]
-        tab_item = [400, 80, 80, 80]
-        tab_place = [480, 80, 80, 80]
-        tab_progress = [560, 80, 80, 80]
+        tab_crystal = [240, 80, 80, 80]
+        tab_deck = [320, 80, 80, 80]
+        tab_equipment = [400, 80, 80, 80]
+        tab_item = [480, 80, 80, 80]
+        tab_place = [560, 80, 80, 80]
+        tab_progress = [640, 80, 80, 80]
         button_prev = [920, 560, 40, 40]
         text_page = [964, 564]
         button_next = [1080, 560, 80, 80]
         description_rect = []
 
         class Profile():
-            pass
+            profile_image = [80, 160, 160, 160]
+            icon_gold = [120, 360, 40, 40]
+            text_gold = [164, 364]
 
         class Card():
             item_start = [80, 160]
             item_size = [160, 240]
             item_interval = [160, 240]
             
+        class Crystal():
+            item_start = [80, 160]
+            item_size = [160, 240]
+            item_interval = [160, 240]
+
         class Deck():
             item_start = [80, 160]
             item_size = [160, 240]
             item_interval = [160, 240]
 
         class Equipment():
-            pass
+            description_box = [880, 160, 320, 480]
+            item_start = [80, 160]
+            item_size = [80, 80]
+            item_interval = [80, 80]
 
         class Item():
-            pass
+            description_box = [880, 160, 320, 480]
+            item_start = [80, 160]
+            item_size = [80, 80]
+            item_interval = [80, 80]
 
         class Place():
-            pass
+            position = [80, 160]
+            rect = [0, 0, 720, 480]
 
         class Progress():
             pass
@@ -57,6 +72,8 @@ class Field():
 
         tab_profile = [80, 80, 80, 80]
         tab_deck = [160, 80, 80, 80]
+        tab_crystal = [240, 80, 80, 80]
+        tab_place = [320, 80, 80, 80]
         button_prev = [920, 560, 40, 40]
         text_page = [964, 564]
         button_next = [1080, 560, 80, 80]
@@ -68,6 +85,13 @@ class Field():
             item_start = [80, 160]
             item_size = [160, 240]
             item_interval = [160, 240]
+
+        class Crystal():
+            pass
+
+        class Place():
+            position = [80, 160]
+            rect = [0, 0, 720, 480]
 
     class Menu():
         rect = [320, 240, 640, 240]
@@ -116,14 +140,22 @@ class Game():
             [80, 480, 160, 240], [160, 480, 160, 240], [240, 480, 160, 240], [320, 480, 160, 240],
             [400, 480, 160, 240], [480, 480, 160, 240], [560, 480, 160, 240], [640, 480, 160, 240]
         ]
-
+        description_box = [880, 360, 320, 80]
+        crystal_box = [880, 440, 160, 120]
         crystal = [
-            [960, 480, 40, 40], [1000, 480, 40, 40], [1040, 480, 40, 40], [1080, 480, 40, 40],
-            [960, 520, 40, 40], [1000, 520, 40, 40], [1040, 520, 40, 40], [1080, 520, 40, 40],
-            [960, 560, 40, 40], [1000, 560, 40, 40], [1040, 560, 40, 40], [1080, 560, 40, 40],
+            [880, 440, 40, 40], [920, 440, 40, 40], [960, 440, 40, 40], [1000, 440, 40, 40],
+            [880, 480, 40, 40], [920, 480, 40, 40], [960, 480, 40, 40], [1000, 480, 40, 40],
+            [880, 520, 40, 40], [920, 520, 40, 40], [960, 520, 40, 40], [1000, 520, 40, 40],
         ]
-        button_turn_end = [1160, 480, 80, 40]
-        text_turn_end = [1168, 484]
+        equipment = [
+            [880, 560, 80, 80], [960, 560, 80, 80], [1040, 560, 80, 80], [1120, 560, 80, 80],
+            [880, 640, 80, 80], [960, 640, 80, 80]
+        ]
+        item = [
+            [1040, 640, 80, 80], [1120, 640, 80, 80]
+        ]
+        button_turn_end = [1040, 440, 160, 120]
+        text_turn_end = [1048, 484]
 
 class Card():
     rect = [0, 0, 160, 240]
@@ -134,5 +166,17 @@ class Card():
     text_attack = [24, 204]
     text_life = [124, 204]
 
+class Crystal():
+    rect = [0, 0, 160, 240]
+    image_crystal = [60, 40, 40, 40]
+    text_name = [4, 122]
+    text_description = [4, 142]
+
+class Deck():
+    rect = [0, 0, 160, 240]
+
 class Equipment():
+    rect = [0, 0, 160, 240]
+
+class Item():
     rect = [0, 0, 160, 240]

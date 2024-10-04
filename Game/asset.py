@@ -11,6 +11,8 @@ class Image():
 
     card = {}
     crystal = {}
+    equipment = {}
+    item = {}
 
     class Button():
         menu = None
@@ -23,6 +25,7 @@ class Image():
         profile = None
         deck = None
         card = None
+        crystal = None
         equipment = None
         item = None
         place = None

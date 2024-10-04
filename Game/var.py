@@ -7,6 +7,7 @@ save = {}
 
 scene = 'title'
 state = ''
+state_game_click = ''
 menu = False
 
 tab_field = ''
@@ -15,6 +16,8 @@ tab_adventure = ''
 card_display_list = []
 card_display_page = 0
 deck_card_display_page = 0
+crystal_display_list = []
+crystal_display_page = 0
 
 keyboard = {
     'left' : False, 'right' : False, 'up' : False, 'down' : False
@@ -39,6 +42,8 @@ class Adventure():
     ]
 
 class Player():
+    gold = 0
+    
     basic_deck = {
         'card' : [1, 1, 1, 2, 2, 2, 3, 3, 3],
         'crystal' : [1, 1, 1, 1, 1, 1, 1, 1]
@@ -63,3 +68,5 @@ class Game():
     hand_crystal = []
 
     field = []
+
+    selected_thing = {}
