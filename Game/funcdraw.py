@@ -318,16 +318,16 @@ def draw_card(card, position):
     pygame.draw.rect(temp_surface, const.Color.black, UI.Card.rect, 2)
     temp_surface.blit(asset.Image.card[card['id']], UI.Card.image_card)
     pygame.draw.rect(temp_surface, const.Color.black, UI.Card.image_card, 2)
-    temp_surface.blit(asset.Font.main_16.render(f'{card['name']}', False, const.Color.black), UI.Card.text_name)
+    temp_surface.blit(asset.Font.main_16.render(f'{card["name"]}', False, const.Color.black), UI.Card.text_name)
 
     for i in range(len(card['crystal'])):
         if card['crystal'][i][0] == 'any':
             temp_surface.blit(asset.Image.crystal[1], UI.Card.crystal[i])
-        temp_surface.blit(asset.Font.main_32.render(f'{card['crystal'][i][1]}', False, const.Color.black), UI.Card.text_crystal[i])
+        temp_surface.blit(asset.Font.main_32.render(f'{card["crystal"][i][1]}', False, const.Color.black), UI.Card.text_crystal[i])
 
     if card['type'] == 'unit':
-        temp_surface.blit(asset.Font.main_32.render(f'{card['stat'][0]}', False, const.Color.black), UI.Card.text_attack)
-        temp_surface.blit(asset.Font.main_32.render(f'{card['stat'][1]}', False, const.Color.black), UI.Card.text_life)
+        temp_surface.blit(asset.Font.main_32.render(f'{card["stat"][0]}', False, const.Color.black), UI.Card.text_attack)
+        temp_surface.blit(asset.Font.main_32.render(f'{card["stat"][1]}', False, const.Color.black), UI.Card.text_life)
 
     var.screen.blit(temp_surface, position)
 
@@ -336,7 +336,7 @@ def draw_crystal(crystal, position):
     pygame.draw.rect(temp_surface, const.Color.white, UI.Crystal.rect)
     pygame.draw.rect(temp_surface, const.Color.black, UI.Crystal.rect, 2)
     temp_surface.blit(asset.Image.crystal[crystal['id']], UI.Crystal.image_crystal)
-    temp_surface.blit(asset.Font.main_16.render(f'{crystal['name']}', False, const.Color.black), UI.Crystal.text_name)
+    temp_surface.blit(asset.Font.main_16.render(f'{crystal["name"]}', False, const.Color.black), UI.Crystal.text_name)
 
     var.screen.blit(temp_surface, position)
 
