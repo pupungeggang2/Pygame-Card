@@ -5,3 +5,5 @@ equipment = {}
 item = {}
 field = {}
 deck = {}
+
+description = {}

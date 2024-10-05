@@ -8,8 +8,10 @@ class Title():
 class Field():
     button_menu = [1220, 20, 40, 40]
     button_info = [1220, 660, 40, 40]
-    text_place = [8, 24]
-    text_tip = [8, 664]
+    box_place = [0, 0, 480, 40]
+    text_place = [8, 4]
+    box_tip = [0, 680, 480, 40]
+    text_tip = [8, 684]
 
     class Info():
         rect = [80, 80, 1120, 560]
@@ -24,7 +26,7 @@ class Field():
         tab_progress = [640, 80, 80, 80]
         button_prev = [920, 560, 40, 40]
         text_page = [964, 564]
-        button_next = [1080, 560, 80, 80]
+        button_next = [1120, 560, 80, 80]
         description_rect = []
 
         class Profile():
@@ -48,13 +50,19 @@ class Field():
             item_interval = [160, 240]
 
         class Equipment():
-            description_box = [880, 160, 320, 480]
+            description_box = [880, 160, 320, 320]
+            description_text = [
+                [884, 162], [884, 182], [884, 202], [884, 222]
+            ]
             item_start = [80, 160]
             item_size = [80, 80]
             item_interval = [80, 80]
 
         class Item():
-            description_box = [880, 160, 320, 480]
+            description_box = [880, 160, 320, 320]
+            description_text = [
+                [884, 162], [884, 182], [884, 202], [884, 222]
+            ]
             item_start = [80, 160]
             item_size = [80, 80]
             item_interval = [80, 80]
@@ -176,7 +184,9 @@ class Deck():
     rect = [0, 0, 160, 240]
 
 class Equipment():
-    rect = [0, 0, 160, 240]
+    rect = [0, 0, 80, 80]
+    image_equipment = [0, 0]
 
 class Item():
-    rect = [0, 0, 160, 240]
+    rect = [0, 0, 80, 80]
+    image_item = [0, 0]

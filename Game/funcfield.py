@@ -31,17 +31,26 @@ def move_player():
 
     if var.keyboard['left'] == True:
         temp_position[0] += -320 / var.FPS
+        var.Field.player_facing = 'left'
     if var.keyboard['right'] == True:
         temp_position[0] += 320 / var.FPS
+        var.Field.player_facing = 'right'
     if var.keyboard['up'] == True:
         temp_position[1] += -320 / var.FPS
+        var.Field.player_facing = 'up'
     if var.keyboard['down'] == True:
         temp_position[1] += 320 / var.FPS
+        var.Field.player_facing = 'down'
 
     var.Field.position_player[0] = temp_position[0]
     var.Field.position_player[1] = temp_position[1]
 
-    temp_camera = [var.Field.position_player[0] - 640, var.Field.position_player[1] - 360]
+    temp_camera = [0, var.Field.position_player[1] - 360]
+
+    if temp_camera[1] < 0:
+        temp_camera[1] = 1
+    elif temp_camera[1] > 560:
+        temp_camera[1] = 560
 
     var.Field.camera[0] = temp_camera[0]
     var.Field.camera[1] = temp_camera[1]

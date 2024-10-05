@@ -1,3 +1,9 @@
 {
-    1 : {'id' : 1, 'rarity' : 'basic', 'name' : 'basic crystal', 'crystal' : ['normal'], 'effect' : []}   
+    1 : {'id' : 1, 'rarity' : 'basic', 'name' : 'basic crystal', 'crystal' : ['normal'], 'effect' : []},
+    2 : {'id' : 2, 'rarity' : 'basic', 'name' : 'fire crystal', 'crystal' : ['fire'], 'effect' : []},
+    3 : {'id' : 3, 'rarity' : 'basic', 'name' : 'water crystal', 'crystal' : ['water'], 'effect' : []},
+    4 : {'id' : 4, 'rarity' : 'basic', 'name' : 'wind crystal', 'crystal' : ['wind'], 'effect' : []},
+    5 : {'id' : 5, 'rarity' : 'basic', 'name' : 'earth crystal', 'crystal' : ['earth'], 'effect' : []},
+    6 : {'id' : 6, 'rarity' : 'basic', 'name' : 'light crystal', 'crystal' : ['light'], 'effect' : []},
+    7 : {'id' : 7, 'rarity' : 'basic', 'name' : 'dark crystal', 'crystal' : ['dark'], 'effect' : []},
 }

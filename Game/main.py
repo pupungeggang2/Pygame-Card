@@ -34,6 +34,9 @@ def load_data():
     f = open('Data/monster.txt', 'r')
     data.monster = ast.literal_eval(f.read())
     f.close()
+    f = open('Data/description.txt', 'r')
+    data.description = ast.literal_eval(f.read())
+    f.close()
 
     var.card_display_list = []
 
@@ -44,6 +47,16 @@ def load_data():
 
     for crystal in data.crystal:
         var.crystal_display_list.append(crystal)
+
+    var.equipment_display_list = []
+
+    for equipment in data.equipment:
+        var.equipment_display_list.append(equipment)
+
+    var.item_display_list = []
+
+    for item in data.item:
+        var.item_display_list.append(item)
 
 def load_asset():
     try:
@@ -58,8 +71,9 @@ def load_asset():
     asset.Image.monster = pygame.image.load('Image/Monster.png')
     asset.Image.mystery = pygame.image.load('Image/Mystery.png')
     asset.Image.field_shop = pygame.image.load('Image/FieldShop.png')
-
     asset.Image.save = pygame.image.load('Image/Save.png')
+    asset.Image.unknown_big = pygame.image.load('Image/UnknownBig.png')
+    asset.Image.unknown_small = pygame.image.load('Image/UnknownSmall.png')
 
     for card in data.card:
         try:
@@ -85,20 +99,28 @@ def load_asset():
         except:
             asset.Image.item[item] = pygame.image.load('Image/TempImage80.png')
 
-    asset.Image.Button.menu = pygame.image.load('Image/ButtonMenu.png')
-    asset.Image.Button.info = pygame.image.load('Image/ButtonInfo.png')
-    asset.Image.Button.close = pygame.image.load('Image/ButtonClose.png')
-    asset.Image.Button.prev = pygame.image.load('Image/ButtonPrev.png')
-    asset.Image.Button.next = pygame.image.load('Image/ButtonNext.png')
+    asset.Image.player['left'] = pygame.image.load('Image/PlayerLeft.png')
+    asset.Image.player['right'] = pygame.image.load('Image/PlayerRight.png')
+    asset.Image.player['up'] = pygame.image.load('Image/PlayerUp.png')
+    asset.Image.player['down'] = pygame.image.load('Image/PlayerDown.png')
 
-    asset.Image.Tab.profile = pygame.image.load('Image/TabProfile.png')
-    asset.Image.Tab.deck = pygame.image.load('Image/TabDeck.png')
-    asset.Image.Tab.card = pygame.image.load('Image/TabCard.png')
-    asset.Image.Tab.crystal = pygame.image.load('Image/TabCrystal.png')
-    asset.Image.Tab.equipment = pygame.image.load('Image/TabEquipment.png')
-    asset.Image.Tab.item = pygame.image.load('Image/TabItem.png')
-    asset.Image.Tab.place = pygame.image.load('Image/TabPlace.png')
-    asset.Image.Tab.progress = pygame.image.load('Image/TabProgress.png')
+    asset.Image.background['grass'] = pygame.image.load('Image/Grass.png')
+    asset.Image.background['snow'] = pygame.image.load('Image/Snow.png')
+
+    asset.Image.Button.menu = pygame.image.load('Image/Button/ButtonMenu.png')
+    asset.Image.Button.info = pygame.image.load('Image/Button/ButtonInfo.png')
+    asset.Image.Button.close = pygame.image.load('Image/Button/ButtonClose.png')
+    asset.Image.Button.prev = pygame.image.load('Image/Button/ButtonPrev.png')
+    asset.Image.Button.next = pygame.image.load('Image/Button/ButtonNext.png')
+
+    asset.Image.Tab.profile = pygame.image.load('Image/Tab/TabProfile.png')
+    asset.Image.Tab.deck = pygame.image.load('Image/Tab/TabDeck.png')
+    asset.Image.Tab.card = pygame.image.load('Image/Tab/TabCard.png')
+    asset.Image.Tab.crystal = pygame.image.load('Image/Tab/TabCrystal.png')
+    asset.Image.Tab.equipment = pygame.image.load('Image/Tab/TabEquipment.png')
+    asset.Image.Tab.item = pygame.image.load('Image/Tab/TabItem.png')
+    asset.Image.Tab.place = pygame.image.load('Image/Tab/TabPlace.png')
+    asset.Image.Tab.progress = pygame.image.load('Image/Tab/TabProgress.png')
 
 def load_save():
     try:

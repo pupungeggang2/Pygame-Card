@@ -29,8 +29,12 @@ def display():
     if var.menu == True:
         funcdraw.draw_menu_field()
 
+    pygame.draw.rect(var.screen, const.Color.white, UI.Field.box_place)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.box_place, 2)
     var.screen.blit(asset.Font.main_32.render(var.Field.place, False, const.Color.black), UI.Field.text_place)
     var.screen.blit(asset.Image.Button.menu, UI.Field.button_menu[:2])
+    pygame.draw.rect(var.screen, const.Color.white, UI.Field.box_tip)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Field.box_tip, 2)
     var.screen.blit(asset.Font.main_32.render('[E] Interact [I] Info', False, const.Color.black), UI.Field.text_tip)
     var.screen.blit(asset.Image.Button.info, UI.Field.button_info[:2])
     
@@ -67,8 +71,11 @@ def mouse_up(x, y, button):
                     var.crystal_display_page = 0
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_equipment):
                     var.tab_field = 'equipment'
+                    var.equipment_display_page = 0
+                    var.equipment_display_selected = -1
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_item):
                     var.tab_field = 'item'
+                    var.item_display_page = 0
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_place):
                     var.tab_field = 'place'
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.tab_progress):
@@ -90,6 +97,19 @@ def mouse_up(x, y, button):
                         if var.crystal_display_page > 0:
                             var.crystal_display_page -= 1
 
+                elif var.tab_field == 'equipment':
+                    if funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_next):
+                        if var.equipment_display_page < len(var.equipment_display_list) // 42:
+                            var.equipment_display_page += 1
+                    elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info.button_prev):
+                        if var.equipment_display_page > 0:
+                            var.equipment_display_page -= 1
+
+                    for i in range(6):
+                        for j in range(7):
+                            if funcphysics.point_inside_rect(x, y, UI.Field.Info.Equipment.item_start[0] + UI.Field.Info.Equipment.item_interval[0] * j, UI.Field.Info.Equipment.item_start[1] + UI.Field.Info.Equipment.item_interval[1] * i, UI.Field.Info.Equipment.item_size[0], UI.Field.Info.Equipment.item_size[1]):
+                                var.equipment_display_selected = i * 7 + j
+
             elif var.state == 'info_adventure':
                 if funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.button_close):
                     var.state = ''
@@ -101,6 +121,7 @@ def mouse_up(x, y, button):
                     var.deck_card_display_page = 0
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_crystal):
                     var.tab_adventure = 'crystal'
+                    var.crystal_display_page = 0
                 elif funcphysics.point_inside_rect_array(x, y, UI.Field.Info_Adventure.tab_place):
                     var.tab_adventure = 'place'
 

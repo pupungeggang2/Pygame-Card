@@ -1,3 +1,8 @@
 {
-    1 : {'id' : 1, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]}
+    1 : {'id' : 1, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]},
+    2 : {'id' : 2, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]},
+    3 : {'id' : 3, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]},
+    4 : {'id' : 4, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]},
+    5 : {'id' : 5, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]},
+    6 : {'id' : 6, 'rarity' : 'basic', 'element' : ['normal'], 'name' : 'small battery', 'effect' : [['GameStart', ['DrawCrystal', 1]]]},
 }

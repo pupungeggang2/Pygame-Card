@@ -18,6 +18,12 @@ card_display_page = 0
 deck_card_display_page = 0
 crystal_display_list = []
 crystal_display_page = 0
+equipment_display_list = []
+equipment_display_page = 0
+equipment_display_selected = -1
+item_display_list = []
+item_display_page = 0
+item_display_selected = -1
 
 keyboard = {
     'left' : False, 'right' : False, 'up' : False, 'down' : False
@@ -26,6 +32,7 @@ keyboard = {
 class Field():
     camera = [0, 0]
     position_player = [640, 640]
+    player_facing = 'down'
     place = 'HomeTown'
     field = {}
     destination_place = ''
@@ -49,9 +56,10 @@ class Player():
         'crystal' : [1, 1, 1, 1, 1, 1, 1, 1]
     }
     selected_deck = 0
-    card = []
-    equipment = []
-    item = []
+    card_discovered = {}
+    crystal_discovered = {}
+    equipment_discovered = {}
+    item_discovered = {}
 
 class Game():
     turn = 0

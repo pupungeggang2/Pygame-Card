@@ -8,11 +8,15 @@ class Image():
     monster = None
     mystery = None
     field_shop = None
-
+    unknown_big = None
+    unknown_small = None
+    
     card = {}
     crystal = {}
     equipment = {}
     item = {}
+    background = {}
+    player = {}
 
     class Button():
         menu = None

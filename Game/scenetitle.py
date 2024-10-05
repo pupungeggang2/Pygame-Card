@@ -23,6 +23,7 @@ def mouse_up(x, y, button):
                 if funcphysics.point_inside_rect_array(x, y, UI.Title.button_start):
                     var.scene = 'field'
                     var.state = ''
+                    funcsave.load_data()
                     funcfield.field_init()
 
                 elif funcphysics.point_inside_rect_array(x, y, UI.Title.button_erase):

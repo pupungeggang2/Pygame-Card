@@ -25,10 +25,10 @@
 
 ## Field Part
 
-[ ] Loading field.
-[ ] Character movement.
-[ ] Collision check.
-[ ] Field transition.
+[v] Loading field.
+[v] Character movement.
+[v] Collision check.
+[v] Field transition.
 
 ### Managing Adventure
 
@@ -37,12 +37,13 @@
 
 ### Village Info Page
 
-[ ] Info page layout.
-[ ] Info page tabs.
+[v] Info page layout.
+[v] Info page tabs.
 [ ] Profile.
-[ ] Deck.
+[v] Deck.
 [v] Card.
-[ ] Collection.
+[v] Equipment.
+[v] Item.
 [ ] Map.
 [ ] Progress.
 
@@ -58,13 +59,13 @@
 ### Displaying Game part
 
 [ ] Field.
-[ ] Lower part.
+[v] Lower part.
 
 ### Basic Deck Manipulation
 
-[ ] Building deck.
-[ ] Shuffling deck.
-[ ] Drawing card.
+[v] Building deck.
+[v] Shuffling deck.
+[v] Drawing card.
 
 ### Handling Game
 
