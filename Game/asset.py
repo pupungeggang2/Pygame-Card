@@ -10,6 +10,8 @@ class Image():
     field_shop = None
     unknown_big = None
     unknown_small = None
+    temp_80 = None
+    temp_40 = None
     
     card = {}
     crystal = {}

@@ -69,8 +69,8 @@
 
 ### Handling Game
 
-[ ] Start hand change.
-[ ] Starting the first turn.
-[ ] Checking whether player can play a card.
-[ ] Processing card.
+[v] Start hand change.
+[v] Starting the first turn.
+[v] Checking whether player can play a card.
+[v] Processing card.
 [ ] Battle over.

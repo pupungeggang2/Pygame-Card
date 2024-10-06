@@ -74,6 +74,8 @@ def load_asset():
     asset.Image.save = pygame.image.load('Image/Save.png')
     asset.Image.unknown_big = pygame.image.load('Image/UnknownBig.png')
     asset.Image.unknown_small = pygame.image.load('Image/UnknownSmall.png')
+    asset.Image.temp_80 = pygame.image.load('Image/TempImage80.png')
+    asset.Image.temp_40 = pygame.image.load('Image/TempImage40.png')
 
     for card in data.card:
         try:
@@ -162,6 +164,13 @@ def handle_input():
 
             elif var.scene == 'game':
                 scenegame.mouse_up(x, y, button)
+
+        if event.type == pygame.MOUSEMOTION:
+            if var.scene == 'game':
+                mouse = pygame.mouse.get_pos()
+                x = mouse[0]
+                y = mouse[1]
+                scenegame.mouse_move(x, y)
 
         if event.type == pygame.KEYDOWN:
             key = event.key

@@ -3,6 +3,9 @@ import asset, UI, data, var, const
 import funcphysics, funcdraw, funcfield, funcgame
 
 def loop():
+    if var.menu == False:
+        if var.state == '':
+            funcgame.mouse_card_handle()
     display()
 
 def display():
@@ -20,7 +23,20 @@ def mouse_up(x, y, button):
     if button == 1:
         if var.menu == False:
             if var.state == '':
-                pass
+                if var.state_game_click == '':
+                    for i in range(len(var.Game.hand_card)):
+                        if funcphysics.point_inside_rect_array(x, y, UI.Game.Lower.hand_card_mouse[i]):
+                            var.state_game_click = 'card'
+                            var.Game.selected_card = i
+
+                    if funcphysics.point_inside_rect_array(x, y, UI.Game.Lower.button_turn_end):
+                        funcgame.turn_end()
+                        funcgame.turn_start()
+
+                elif var.state_game_click == 'card':
+                    if funcphysics.point_inside_rect_array(x, y, UI.Game.Lower.hand_card[var.Game.selected_card]):
+                        funcgame.handle_effect_card(var.Game.hand_card[var.Game.selected_card])
+
             elif var.state == 'start':
                 for i in range(3):
                     if funcphysics.point_inside_rect_array(x, y, UI.Game.Start.button_select[i]):
@@ -38,6 +54,10 @@ def mouse_up(x, y, button):
                     funcgame.turn_start_first()
                     funcgame.turn_start()
                     var.state = ''
+
+def mouse_move(x, y):
+    var.mouse[0] = x
+    var.mouse[1] = y
 
 def key_down(key):
     pass

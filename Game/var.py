@@ -29,6 +29,8 @@ keyboard = {
     'left' : False, 'right' : False, 'up' : False, 'down' : False
 }
 
+mouse = [0, 0]
+
 class Field():
     camera = [0, 0]
     position_player = [640, 640]
@@ -62,6 +64,8 @@ class Player():
     item_discovered = {}
 
 class Game():
+    monster_id = -1
+
     turn = 0
     turn_who = 0
 
@@ -74,7 +78,18 @@ class Game():
     deck_crystal = []
     hand_card = []
     hand_crystal = []
+    hand_crystal_temp = []
+    hand_crystal_spent = []
+    effect_queue = []
 
-    field = []
+    field = [
+        None,
+        None, None, None, None, None, None,
+        None, None, None, None, None, None,
+        None
+    ]
 
-    selected_thing = {}
+    hand_card_mouse = -1
+    selected_card = -1
+    selected_equipment = -1
+    selected_item = -1

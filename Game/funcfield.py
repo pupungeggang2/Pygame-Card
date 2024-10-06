@@ -63,6 +63,7 @@ def collision_check():
                 var.Field.field['event'].pop(i)
                 var.scene = 'game'
                 var.state = 'start'
+                var.state_game_click = ''
                 funcgame.game_init()
                 break
 

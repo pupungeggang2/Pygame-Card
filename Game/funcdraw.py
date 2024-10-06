@@ -278,9 +278,18 @@ def draw_game_field():
     for i in range(14):
         pygame.draw.rect(var.screen, const.Color.black, UI.Game.Field.unit[i], 2)
 
+        if var.Game.field[i] != None:
+            draw_unit(var.Game.field[i], UI.Game.Field.unit[i][:2])
+
 def draw_game_lower():
     for i in range(len(var.Game.hand_card)):
         draw_card(var.Game.hand_card[i], [UI.Game.Lower.hand_card[i][0], UI.Game.Lower.hand_card[i][1]])
+
+    if var.state_game_click == '':
+        if var.Game.hand_card_mouse != -1:
+            draw_card(var.Game.hand_card[var.Game.hand_card_mouse], [UI.Game.Lower.hand_card[var.Game.hand_card_mouse][0], UI.Game.Lower.hand_card[var.Game.hand_card_mouse][1]])
+    elif var.state_game_click == 'card':
+        draw_card(var.Game.hand_card[var.Game.selected_card], [UI.Game.Lower.hand_card[var.Game.selected_card][0], UI.Game.Lower.hand_card[var.Game.selected_card][1]])
 
     pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.description_box, 2)
     pygame.draw.rect(var.screen, const.Color.black, UI.Game.Lower.crystal_box, 2)
@@ -350,4 +359,19 @@ def draw_unknown_small(position):
     temp_surface = pygame.Surface((80, 80))
     temp_surface.blit(asset.Image.unknown_small, [0, 0])
     pygame.draw.rect(temp_surface, const.Color.black, [0, 0, 80, 80], 2)
+    var.screen.blit(temp_surface, position)
+
+def draw_unit(unit, position):
+    temp_surface = pygame.Surface((120, 80))
+    temp_surface.fill(const.Color.white)
+
+    try:
+        temp_surface.blit(asset.Image.card[unit['id']], UI.Unit.image_unit)
+    except:
+        temp_surface.blit(asset.Image.temp_80, UI.Unit.image_unit)
+
+    temp_surface.blit(asset.Font.main_32.render(f'{unit["stat"][0]}', False, const.Color.black), UI.Unit.text_attack)
+    temp_surface.blit(asset.Font.main_32.render(f'{unit["stat"][1]}', False, const.Color.black), UI.Unit.text_life)
+
+    pygame.draw.rect(temp_surface, const.Color.black, UI.Unit.rect, 2)
     var.screen.blit(temp_surface, position)

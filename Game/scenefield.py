@@ -158,7 +158,6 @@ def mouse_up(x, y, button):
                 var.scene = 'title'
                 var.state = ''
 
-
 def key_down(key):
     if var.menu == False:
         if var.state == '':
